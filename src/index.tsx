@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import * as serviceWorker from "./serviceWorker";
+import { Resolver } from "found-relay";
+import environment from "./environment";
+import Router from "./Router";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Router resolver={new Resolver(environment)} />,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
