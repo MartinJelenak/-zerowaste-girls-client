@@ -1,21 +1,22 @@
 import React from "react";
 import * as _ from "lodash";
 import { graphql } from "babel-plugin-relay/macro";
-import { createFragmentContainer } from "react-relay";
+import { createFragmentContainer, Environment, RelayProp } from "react-relay";
 import { TestComponent_data } from "./__generated__/TestComponent_data.graphql";
 
 interface TestComponentProps {
-  node: TestComponent_data;
+  data: TestComponent_data;
+  relay?: RelayProp;
 }
 
 function TestComponent(props: TestComponentProps) {
-  console.log(props.node);
+  console.log(props);
 
   return (
     <div>
       <div>OLAHEJ</div>
-      {_.map(props.node, (row: any) => (
-        <div>{row._id}</div>
+      {_.map(props.data.notes, (row: any) => (
+        <div key={row._id}>{row._id}</div>
       ))}
     </div>
   );
@@ -27,6 +28,8 @@ export default createFragmentContainer(TestComponent, {
       notes {
         _id
         title
+        prolog
+        article
       }
     }
   `,

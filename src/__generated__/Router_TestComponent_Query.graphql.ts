@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash b8ccbded40fba165e4c372e6979b2259 */
+/* @relayHash b224ca3403c7b79c7128740a9750e197 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -24,6 +24,8 @@ fragment TestComponent_data on Query {
   notes {
     _id
     title
+    prolog
+    article
   }
 }
 */
@@ -71,6 +73,20 @@ const node: ConcreteRequest = {
             "name": "title",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "prolog",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "article",
+            "args": null,
+            "storageKey": null
           }
         ]
       }
@@ -80,7 +96,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "Router_TestComponent_Query",
     "id": null,
-    "text": "query Router_TestComponent_Query {\n  ...TestComponent_data\n}\n\nfragment TestComponent_data on Query {\n  notes {\n    _id\n    title\n  }\n}\n",
+    "text": "query Router_TestComponent_Query {\n  ...TestComponent_data\n}\n\nfragment TestComponent_data on Query {\n  notes {\n    _id\n    title\n    prolog\n    article\n  }\n}\n",
     "metadata": {}
   }
 };

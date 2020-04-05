@@ -14,8 +14,6 @@ import App from "./App";
 import TestComponent from "./TestComponent";
 import { spawn } from "child_process";
 
-export const historyMiddlewares = [queryMiddleware];
-
 export const routes = makeRouteConfig(
   <Route
     path="/"
@@ -47,6 +45,6 @@ export default createFarceRouter({
   routeConfig: hotRouteConfig(routes),
   render: createRender({
     // eslint-disable-next-line react/display-name
-    renderError: (args: RenderErrorArgs) => <span>error</span>,
+    renderError: (args: RenderErrorArgs) => <span>Page not found</span>,
   }),
 });
