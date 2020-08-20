@@ -5,38 +5,43 @@ import {
   makeRouteConfig,
   RenderErrorArgs,
   Route,
+  Redirect,
 } from "found";
 import React from "react";
 import { graphql } from "babel-plugin-relay/macro";
 import { BrowserProtocol, queryMiddleware } from "farce";
-import { Resolver } from "found-relay";
+// import { Resolver } from "found-relay";
 import App from "./App";
 import TestComponent from "./TestComponent";
-import { spawn } from "child_process";
+import SecondComponent from "./components/SecondComponent";
+// import { spawn } from "child_process";
 
 export const routes = makeRouteConfig(
-  <Route
-    path="/"
-    Component={TestComponent}
-    query={graphql`
-      query Router_TestComponent_Query {
-        ...TestComponent_data
-      }
-    `}
-    render={(args: any) => {
-      const { Component, props, error } = args;
+  <Route path="/" component={App}>
+    <Route
+      Component={TestComponent}
+      query={graphql`
+        query Router_TestComponent_Query {
+          ...TestComponent_data
+        }
+      `}
+      render={(args: any) => {
+        const { Component, props, error } = args;
 
-      if (error) {
-        return <>error</>;
-      }
+        if (error) {
+          return <>error</>;
+        }
 
-      if (!Component || !props) {
-        return <>Loading</>;
-      }
+        if (!Component || !props) {
+          return <>Loading</>;
+        }
 
-      return <Component data={props as any} />;
-    }}
-  ></Route>
+        return <Component data={props as any} />;
+      }}
+    ></Route>
+    <Route path="secondcomp" Component={SecondComponent} />
+    <Route path="secondcomp" Component={SecondComponent} />
+  </Route>
 );
 
 export default createFarceRouter({

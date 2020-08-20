@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import { graphql } from "babel-plugin-relay/macro";
 import { createFragmentContainer, Environment, RelayProp } from "react-relay";
 import { TestComponent_data } from "./__generated__/TestComponent_data.graphql";
+import { Link } from "found";
 
 interface TestComponentProps {
   data: TestComponent_data;
@@ -14,6 +15,9 @@ function TestComponent(props: TestComponentProps) {
 
   return (
     <div>
+      <Link to="/secondcomp" activeClassName="active">
+        <button>test</button>
+      </Link>
       <div>OLAHEJ</div>
       {_.map(props.data.notes, (row: any) => (
         <div key={row._id}>{row._id}</div>

@@ -7,5 +7,5 @@ interface AppProps {
 }
 
 export default function App(props: AppProps) {
-  return <>{props.children}</>;
+  return <></>;
 }
