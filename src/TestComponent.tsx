@@ -16,9 +16,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link, LinkProps } from "found";
+import { Link } from "found";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import InstagramEmbed from "react-instagram-embed";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -51,31 +51,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
 }));
-
-interface ListItemLinkProps {
-  to: string;
-  primary: string;
-}
-
-function ListItemLink(props: ListItemLinkProps) {
-  const { primary, to } = props;
-
-  // const CustomLink = (props: any) => <Link to={to} {...props} />;
-
-  const CustomLink = React.useMemo(
-    () =>
-      React.forwardRef<any, Omit<LinkProps, "to">>((linkProps, ref) => {
-        return <Link ref={ref} to={to} {...linkProps} />;
-      }),
-    [to]
-  );
-
-  return (
-    <ListItem button component={CustomLink}>
-      <ListItemText primary={primary} />
-    </ListItem>
-  );
-}
 
 interface TestComponentProps {
   data: TestComponent_data;
@@ -122,8 +97,13 @@ function TestComponent(props: TestComponentProps) {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <ListItemLink to="/progress" primary="Templates" />
-                  {/* <ListItem button to="/progress" primary="test"></ListItem> */}
+                  {/* <ListItemLink to="/progress" primary="Templates" /> */}
+                  <ListItem
+                    button
+                    component={Link}
+                    to="/progress"
+                    primary="ahsbdashdb"
+                  ></ListItem>
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
@@ -163,8 +143,10 @@ function TestComponent(props: TestComponentProps) {
               </Grid>
             ))}
           </Grid>
+          <div className="powr-instagram-feed" id="09ff6f22_1598016256"></div>
         </Container>
       </main>
+
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>

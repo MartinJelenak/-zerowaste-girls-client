@@ -14,12 +14,13 @@ import { BrowserProtocol, queryMiddleware } from "farce";
 import App from "./App";
 import TestComponent from "./TestComponent";
 import SecondComponent from "./components/SecondComponent";
+import Blog from "./Blog";
 // import { spawn } from "child_process";
 
 export const routes = makeRouteConfig(
   <Route path="/" component={App}>
     <Route
-      Component={TestComponent}
+      Component={Blog}
       query={graphql`
         query Router_TestComponent_Query {
           ...TestComponent_data

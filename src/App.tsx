@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import PropTypes from "prop-types";
 
 interface AppProps {
@@ -7,5 +8,10 @@ interface AppProps {
 }
 
 export default function App(props: AppProps) {
-  return <></>;
+  return (
+    <>
+      <CssBaseline />
+      {props.children}
+    </>
+  );
 }
