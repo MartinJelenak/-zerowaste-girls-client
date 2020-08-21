@@ -39,8 +39,7 @@ export const routes = makeRouteConfig(
         return <Component data={props as any} />;
       }}
     ></Route>
-    <Route path="secondcomp" Component={SecondComponent} />
-    <Route path="secondcomp" Component={SecondComponent} />
+    <Route path="progress" Component={SecondComponent} />
   </Route>
 );
 
