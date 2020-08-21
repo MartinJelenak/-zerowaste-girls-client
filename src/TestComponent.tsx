@@ -1,36 +1,50 @@
+import {
+  createFarceRouter,
+  createRender,
+  hotRouteConfig,
+  makeRouteConfig,
+  RenderErrorArgs,
+  Route,
+} from "found";
 import React from "react";
-import * as _ from "lodash";
 import { graphql } from "babel-plugin-relay/macro";
-import { createFragmentContainer, Environment, RelayProp } from "react-relay";
-import { TestComponent_data } from "./__generated__/TestComponent_data.graphql";
+import { BrowserProtocol, queryMiddleware } from "farce";
+import App from "./App";
+import TestComponent from "./TestComponent";
+import Progress from "./components/Progress";
 
-interface TestComponentProps {
-  data: TestComponent_data;
-  relay?: RelayProp;
-}
+export const routes = makeRouteConfig(
+  <Route path="/" component={App}>
+    <Route
+      Component={TestComponent}
+      query={graphql`
+        query Router_TestComponent_Query {
+          ...TestComponent_data
+        }
+      `}
+      render={(args: any) => {
+        const { Component, props, error } = args;
 
-function TestComponent(props: TestComponentProps) {
-  console.log(props);
+        if (error) {
+          return <>error</>;
+        }
 
-  return (
-    <div>
-      <div>OLAHEJ</div>
-      {_.map(props.data.notes, (row: any) => (
-        <div key={row._id}>{row._id}</div>
-      ))}
-    </div>
-  );
-}
+        if (!Component || !props) {
+          return <>Loading</>;
+        }
 
-export default createFragmentContainer(TestComponent, {
-  data: graphql`
-    fragment TestComponent_data on Query {
-      notes {
-        _id
-        title
-        prolog
-        article
-      }
-    }
-  `,
+        return <Component data={props as any} />;
+      }}
+    ></Route>
+    <Route path="progress" Component={Progress} />
+  </Route>
+);
+
+export default createFarceRouter({
+  historyProtocol: new BrowserProtocol(),
+  historyMiddlewares: [queryMiddleware],
+  routeConfig: hotRouteConfig(routes),
+  render: createRender({
+    renderError: (args: RenderErrorArgs) => <span>Page not found</span>,
+  }),
 });
