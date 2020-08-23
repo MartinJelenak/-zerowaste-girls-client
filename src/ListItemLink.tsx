@@ -1,15 +1,15 @@
 import React from "react";
 import { Link, LinkProps } from "found";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
 
 interface ListItemLinkProps {
   to: string;
   primary: string;
+  icon?: React.ReactElement;
 }
 
 export default function ListItemLink(props: ListItemLinkProps) {
-  const { primary, to } = props;
+  const { primary, to, icon } = props;
 
   const CustomLink = React.useMemo(
     () =>
@@ -21,6 +21,7 @@ export default function ListItemLink(props: ListItemLinkProps) {
 
   return (
     <ListItem button component={CustomLink}>
+      {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
       <ListItemText primary={primary} />
     </ListItem>
   );

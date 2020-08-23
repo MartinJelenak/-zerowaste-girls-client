@@ -18,7 +18,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "found";
 import ListItem from "@material-ui/core/ListItem";
-import InstagramEmbed from "react-instagram-embed";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
