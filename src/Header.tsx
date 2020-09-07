@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface HeaderProps {
-  sections: { title: string; to: string }[];
+  sections: { title: string; to: string; disable: boolean }[];
 }
 
 export default function Header(props: HeaderProps) {
@@ -41,7 +41,8 @@ export default function Header(props: HeaderProps) {
         <ListItemLink
           to="/"
           primary="Zerowasted girls"
-          icon={<LocalDiningIcon />}
+          // icon={<LocalDiningIcon />}
+          disable={false}
         ></ListItemLink>
         <Typography
           component="h2"
@@ -50,9 +51,7 @@ export default function Header(props: HeaderProps) {
           align="center"
           noWrap
           className={classes.toolbarTitle}
-        >
-          Typography test
-        </Typography>
+        ></Typography>
         <IconButton>
           <SearchIcon />
         </IconButton>
@@ -62,14 +61,15 @@ export default function Header(props: HeaderProps) {
       </Toolbar>
       <Toolbar
         component="nav"
-        variant="regular"
+        variant="dense"
         className={classes.toolbarSecondary}
       >
-        {/* {props.sections.map((item) => (
-          <ListItemLink to={item.to} primary={item.title}></ListItemLink>
-        ))} */}
         {_.map(props.sections, (item) => (
-          <ListItemLink to={item.to} primary={item.title}></ListItemLink>
+          <ListItemLink
+            to={item.to}
+            primary={item.title}
+            disable={item.disable}
+          ></ListItemLink>
         ))}
       </Toolbar>
     </React.Fragment>

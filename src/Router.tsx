@@ -22,8 +22,8 @@ export const routes = makeRouteConfig(
     <Route
       Component={Blog}
       query={graphql`
-        query Router_TestComponent_Query {
-          ...TestComponent_data
+        query Router_Blog_Query {
+          ...Blog_data
         }
       `}
       render={(args: any) => {

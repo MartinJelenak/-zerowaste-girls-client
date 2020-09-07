@@ -1,26 +1,26 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash b224ca3403c7b79c7128740a9750e197 */
+/* @relayHash 33f31f3e8048889605866a51ca8be47a */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type Router_TestComponent_QueryVariables = {};
-export type Router_TestComponent_QueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"TestComponent_data">;
+export type Router_Blog_QueryVariables = {};
+export type Router_Blog_QueryResponse = {
+    readonly " $fragmentRefs": FragmentRefs<"Blog_data">;
 };
-export type Router_TestComponent_Query = {
-    readonly response: Router_TestComponent_QueryResponse;
-    readonly variables: Router_TestComponent_QueryVariables;
+export type Router_Blog_Query = {
+    readonly response: Router_Blog_QueryResponse;
+    readonly variables: Router_Blog_QueryVariables;
 };
 
 
 
 /*
-query Router_TestComponent_Query {
-  ...TestComponent_data
+query Router_Blog_Query {
+  ...Blog_data
 }
 
-fragment TestComponent_data on Query {
+fragment Blog_data on Query {
   notes {
     _id
     title
@@ -34,21 +34,21 @@ const node: ConcreteRequest = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "Router_TestComponent_Query",
+    "name": "Router_Blog_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "TestComponent_data",
+        "name": "Blog_data",
         "args": null
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "Router_TestComponent_Query",
+    "name": "Router_Blog_Query",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -94,11 +94,11 @@ const node: ConcreteRequest = {
   },
   "params": {
     "operationKind": "query",
-    "name": "Router_TestComponent_Query",
+    "name": "Router_Blog_Query",
     "id": null,
-    "text": "query Router_TestComponent_Query {\n  ...TestComponent_data\n}\n\nfragment TestComponent_data on Query {\n  notes {\n    _id\n    title\n    prolog\n    article\n  }\n}\n",
+    "text": "query Router_Blog_Query {\n  ...Blog_data\n}\n\nfragment Blog_data on Query {\n  notes {\n    _id\n    title\n    prolog\n    article\n  }\n}\n",
     "metadata": {}
   }
 };
-(node as any).hash = 'd31363b9bcb904d00d8497420c272a84';
+(node as any).hash = '82e4c37d43675adb885eac95961e6bf2';
 export default node;
